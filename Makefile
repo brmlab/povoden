@@ -13,7 +13,7 @@ DATAPATH=//table[@class="stdstationtbl"]/./tr[3]//table/tr[position()>1]
 #IMGURL2=http://vvv.chmi.cz/hydro/graph/big/307225_Q.png
 #DATAPATH=//table[2]//tr[3]/td//table//tr[position()>1]
 
-all: index.html doprava.html pomoc.html
+all: index.html doprava.html pomoc.html kontakty.html
 
 refresh:
 	wget '$(IMGURL1)' -O data/stav.png
