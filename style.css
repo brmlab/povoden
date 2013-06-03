@@ -14,7 +14,6 @@ a {
 }
 
 ul#navbar {
-	height: 48px;
 	background: #2c2c2c;
 	background-image: -webkit-linear-gradient(top, #333333, #222222);
 	list-style-type: none;
