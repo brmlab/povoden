@@ -4,6 +4,10 @@ html, body {
 	padding: 0;
 }
 
+a {
+	color: #00f;
+}
+
 .content {
 	padding: 1em;
 	padding-top: 48px;
@@ -79,4 +83,8 @@ table#table24h th {
 
 .footer {
 	font-size: 0.8em;
+}
+
+#pomocnici li {
+	line-height: 2em;
 }
