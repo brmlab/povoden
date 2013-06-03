@@ -11,7 +11,8 @@ html, body {
 
 ul#navbar {
 	height: 48px;
-	background: #333;
+	background: #2c2c2c;
+	background-image: -webkit-linear-gradient(top, #333333, #222222);
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -26,6 +27,12 @@ ul#navbar li {
 	padding-right: 8px;
 	height: 48px;
 	line-height: 48px;
+}
+
+ul#navbar li.separator {
+	background: #f00;
+	padding-left: 2px;
+	padding-right: 2px;
 }
 
 ul#navbar li.logo {
@@ -44,7 +51,6 @@ ul#navbar li a {
 ul#navbar li.active a, ul#navbar li a:hover {
 	color: #fff;
 }
-
 
 table#table24h {
 	border-collapse: collapse;
@@ -68,5 +74,9 @@ table#table24h th {
 }
 
 #doprava {
+	font-size: 0.8em;
+}
+
+.footer {
 	font-size: 0.8em;
 }
