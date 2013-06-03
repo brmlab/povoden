@@ -1,8 +1,8 @@
 HAML=haml
 XMLLINT=xmllint
 
-# option #!
-DATAURL=http://hydro.chmi.cz/hpps/popup_hpps_prfdyn.php?seq=307225A
+# option #1
+DATAURL=http://hydro.chmi.cz/hpps/popup_hpps_prfdyn.php?seq=307225
 IMGURL1=http://hydro.chmi.cz/hpps/tmp/img/big/307225_H.png
 IMGURL2=http://hydro.chmi.cz/hpps/tmp/img/big/307225_Q.png
 DATAPATH=//table[@class="stdstationtbl"]/./tr[3]//table/tr[position()>1]
