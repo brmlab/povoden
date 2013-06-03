@@ -1,0 +1,21 @@
+!!! 5
+%html
+  %head
+    %meta(charset="utf-8")
+    %link(rel="icon" type="image/png" href="favicon.png")
+    %link(rel="stylesheet" type="text/css" href="style.css")
+    %title Povodne - Voda
+  %body
+
+    %ul#navbar
+      %li.logo &nbsp;
+      %li <a href='index.html'>Voda</a>
+      %li.active <a href='doprava.html'>Doprava</a>
+
+    .content
+
+      #imgdoprava
+        %img(src="data/doprava.png" width="100%")
+
+      #doprava
+        =File.read("data/doprava.html")

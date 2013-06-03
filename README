@@ -1,6 +1,1 @@
-Very simple script that mirrors CHMI page for Prague.
-
-Call refre.sh script every 10 minutes.
-
-Only HTML page and two charts are downloaded.
-Other resources are used from the local copy.
+Aggregator page for various information sources deployed on http://povoden.brmlab.cz/
