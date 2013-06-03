@@ -12,3 +12,6 @@ refresh:
 
 clean:
 	rm -f *.html
+
+fail:
+	false
