@@ -13,12 +13,23 @@ DATAPATH=//table[@class="stdstationtbl"]/./tr[3]//table/tr[position()>1]
 #IMGURL2=http://vvv.chmi.cz/hydro/graph/big/307225_Q.png
 #DATAPATH=//table[2]//tr[3]/td//table//tr[position()>1]
 
+DOPRAVAURL=http://www.dpp.cz/povodne-aktualni-doprava/
+DOPRAVATMP=/tmp/doprava.html
+DOPRAVAXPATH1=string(//div[@id="content-container"]/div[@id="pole"]/div/div[2]//a[text()="zde"]/@href)
+DOPRAVAXPATH2=//div[@id="content-container"]/div[@id="pole"]/div/div[2]//*[@class="img-c img-envelope"]/../preceding-sibling::*
+
 all: index.html doprava.html pomoc.html
 
 refresh:
 	wget '$(IMGURL1)' -O data/stav.png
 	wget '$(IMGURL2)' -O data/prutok.png
 	wget '$(DATAURL)' -O - | $(XMLLINT) --html --encode utf8 - | $(XMLLINT) --html --xpath '$(DATAPATH)' - > data/table.html
+
+refreshdpp: 
+	wget http://www.dpp.cz/povodne-aktualni-doprava/ -O - | xmllint --html --encode utf8 - > $(DOPRAVATMP)
+	wget `xmllint --html --xpath  '$(DOPRAVAXPATH1)' $(DOPRAVATMP)` -O - | convert - data/doprava.png 
+	xmllint --html --xpath  '$(DOPRAVAXPATH2)' $(DOPRAVATMP) > data/doprava.html
+	rm $(DOPRAVATMP)
 
 %.html: %.haml
 	$(HAML) $< $@
