@@ -19,11 +19,12 @@
       %li <a href='kontakty.html'>Kontakty</a>
 
     .content
-      %p
+      %ul#obsah
         - @stations.each do |station|
-          %a(href="##{station}") 
-            =File.read("data/name_#{station}.html")
-            %br
+          %li
+            %a(href="##{station}") 
+              =File.read("data/name_#{station}.html")
+    
 
       - @stations.each do |station|
         %hr(id="#{station}")
