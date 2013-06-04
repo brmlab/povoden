@@ -26,9 +26,9 @@ refresh:
 	wget '$(VODAURL)' -O - | $(XMLLINT) --encode utf8 - | $(XMLLINT) --xpath '$(VODAXPATH)' - > data/table_.html
 	mv data/stav_.png data/stav.png && mv data/prutok_.png data/prutok.png && mv data/table_.html data/table.html
 
-refreshdpp: 
+refreshdpp:
 	wget $(DOPRAVAURL) -O - | $(XMLLINT) --encode utf8 - > $(DOPRAVATMP)
-	wget $$($(XMLLINT) --html --xpath  '$(DOPRAVAXPATH1)' $(DOPRAVATMP)) -O - | convert - data/doprava_.png 
+	wget $$($(XMLLINT) --html --xpath  '$(DOPRAVAXPATH1)' $(DOPRAVATMP)) -O - | convert - data/doprava_.png
 	$(XMLLINT) --xpath  '$(DOPRAVAXPATH2)' $(DOPRAVATMP) > data/doprava_.html
 	mv data/doprava_.png data/doprava.png && mv data/doprava_.html data/doprava.html
 	rm $(DOPRAVATMP)
