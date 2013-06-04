@@ -12,6 +12,7 @@ VODAIMG1=http://hydro.chmi.cz/hpps/tmp/img/big/$(STATION)_H.png
 VODAIMG2=http://hydro.chmi.cz/hpps/tmp/img/big/$(STATION)_Q.png
 VODATMP=/tmp/voda.html
 VODAXPATH=//table[@class="stdstationtbl"]/./tr[3]//table/tr[position()>1]
+VODALEGENDXPATH=//table[@class="stdstationtbl"]/./tr[2]/td/table/./tr[1]/td/table/./tr
 VODANAMESXPATH=//table[@class="stdstationtbl"]/./tr[1]//table/./tr[2]/td/text()
 
 # option #2
@@ -32,8 +33,9 @@ wget '$(VODAIMG1)' -O data/stav_$(STATION).png_;  \
 wget '$(VODAIMG2)' -O data/prutok_$(STATION).png_; \
 wget '$(VODAURL)' -O - | $(XMLLINT) --encode utf8 - > $(VODATMP); \
 $(XMLLINT) --xpath '$(VODAXPATH)' $(VODATMP) > data/table_$(STATION).html_; \
+$(XMLLINT) --xpath '$(VODALEGENDXPATH)' $(VODATMP) > data/legend_$(STATION).html_; \
 $(XMLLINT) --xpath '$(VODANAMESXPATH)' $(VODATMP) > data/name_$(STATION).html_; \
-$(foreach FILE,stav_$(STATION).png prutok_$(STATION).png table_$(STATION).html name_$(STATION).html,mv -v data/$(FILE)_ data/$(FILE);) \
+$(foreach FILE,stav_$(STATION).png prutok_$(STATION).png table_$(STATION).html name_$(STATION).html legend_$(STATION).html,mv -v data/$(FILE)_ data/$(FILE);) \
 rm $(VODATMP);
 
 all: index.html doprava.html pomoc.html kontakty.html
