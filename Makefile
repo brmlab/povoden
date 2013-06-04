@@ -1,4 +1,4 @@
-.PHONY : clean refresh 
+.PHONY: clean refresh refreshdpp
 
 HAML=haml
 XMLLINT=xmllint --html --nowarning

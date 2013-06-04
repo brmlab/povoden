@@ -22,9 +22,8 @@
       %ul#obsah
         - @stations.each do |station|
           %li
-            %a(href="##{station}") 
+            %a(href="##{station}")
               =File.read("data/name_#{station}.html")
-    
 
       - @stations.each do |station|
         %hr(id="#{station}")
