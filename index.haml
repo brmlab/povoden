@@ -16,6 +16,7 @@
       %li <a href='kontakty.html'>Kontakty</a>
 
     .content
+
       %table.twocolumn
         %tr
           %td(style="padding: 16px;")
@@ -33,5 +34,46 @@
                 %th průtok [m<sup>3</sup>s<sup>-1</sup>]
                 %th teplota [°C]
               =File.read("data/table.html")
+
+      %hr
+
+      %table.twocolumn
+        %tr
+          %td(style="padding: 16px;")
+            .imgstav
+              %img(src="data/stav_melnik.png")
+            .imgprutok
+              %img(src="data/prutok_melnik.png")
+          %td(style="padding: 16px;")
+            %table#legend24h(style="margin: 16px;")
+              =File.read("data/legend.html")
+            %table#table24h
+              %tr
+                %th datum a čas
+                %th stav [cm]
+                %th průtok [m<sup>3</sup>s<sup>-1</sup>]
+                %th teplota [°C]
+              =File.read("data/table_melnik.html")
+
+      %hr
+
+      %table.twocolumn
+        %tr
+          %td(style="padding: 16px;")
+            .imgstav
+              %img(src="data/stav_usti.png")
+            .imgprutok
+              %img(src="data/prutok_usti.png")
+          %td(style="padding: 16px;")
+            %table#legend24h(style="margin: 16px;")
+              =File.read("data/legend.html")
+            %table#table24h
+              %tr
+                %th datum a čas
+                %th stav [cm]
+                %th průtok [m<sup>3</sup>s<sup>-1</sup>]
+                %th teplota [°C]
+              =File.read("data/table_usti.html")
+
       %hr
       .footer Data poskytuje Český hydrometeorologický ústav. Bez záruky.
