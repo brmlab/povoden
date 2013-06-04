@@ -19,8 +19,14 @@
       %li <a href='kontakty.html'>Kontakty</a>
 
     .content
+      %p
+        - @stations.each do |station|
+          %a(href="##{station}") 
+            =File.read("data/name_#{station}.html")
+            %br
 
       - @stations.each do |station|
+        %hr(id="#{station}")
         %table.twocolumn
           %tr
             %td(style="padding: 16px;")
@@ -39,6 +45,6 @@
                   %th teplota [°C]
                 =File.read("data/table_#{station}.html")
 
-        %hr
+      %hr
 
       .footer Data poskytuje Český hydrometeorologický ústav. Bez záruky.
