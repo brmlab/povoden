@@ -4,13 +4,16 @@ html, body {
 	padding: 0;
 }
 
+a {
+	color: #00f;
+}
+
 .content {
 	padding: 1em;
 	padding-top: 48px;
 }
 
 ul#navbar {
-	height: 48px;
 	background: #2c2c2c;
 	background-image: -webkit-linear-gradient(top, #333333, #222222);
 	list-style-type: none;
@@ -79,4 +82,12 @@ table#table24h th {
 
 .footer {
 	font-size: 0.8em;
+}
+
+#pomocnici li {
+	line-height: 2em;
+}
+
+#kontakty li {
+	line-height: 2em;
 }
