@@ -25,7 +25,7 @@ DOPRAVAXPATH2=//div[@id="content-container"]/div[@id="pole"]/div/div[2]//*[@clas
 
 # function
 get-voda = \
-echo Station $(STATION) \
+echo; echo *Station $(STATION)* ; \
 wget '$(VODAIMG1)' -O data/stav_$(STATION).png_;  \
 wget '$(VODAIMG2)' -O data/prutok_$(STATION).png_; \
 wget '$(VODAURL)' -O - | $(XMLLINT) --encode utf8 - | $(XMLLINT) --xpath '$(VODAXPATH)' - > data/table_$(STATION).html_; \
