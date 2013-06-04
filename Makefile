@@ -2,16 +2,16 @@ HAML=haml
 XMLLINT=xmllint --html --nowarning
 
 # option #1
-DATAURL=http://hydro.chmi.cz/hpps/popup_hpps_prfdyn.php?seq=307225
-IMGURL1=http://hydro.chmi.cz/hpps/tmp/img/big/307225_H.png
-IMGURL2=http://hydro.chmi.cz/hpps/tmp/img/big/307225_Q.png
-DATAPATH=//table[@class="stdstationtbl"]/./tr[3]//table/tr[position()>1]
+VODAURL=http://hydro.chmi.cz/hpps/popup_hpps_prfdyn.php?seq=307225
+VODAIMG1=http://hydro.chmi.cz/hpps/tmp/img/big/307225_H.png
+VODAIMG2=http://hydro.chmi.cz/hpps/tmp/img/big/307225_Q.png
+VODAXPATH=//table[@class="stdstationtbl"]/./tr[3]//table/tr[position()>1]
 
 # oprion #2
-#DATAURL=http://vvv.chmi.cz/hydro/detail_stanice/307225.html
-#IMGURL1=http://vvv.chmi.cz/hydro/graph/big/307225_H.png
-#IMGURL2=http://vvv.chmi.cz/hydro/graph/big/307225_Q.png
-#DATAPATH=//table[2]//tr[3]/td//table//tr[position()>1]
+#VODAURL=http://vvv.chmi.cz/hydro/detail_stanice/307225.html
+#VODAIMG1=http://vvv.chmi.cz/hydro/graph/big/307225_H.png
+#VODAIMG2=http://vvv.chmi.cz/hydro/graph/big/307225_Q.png
+#VODAXPATH=//table[2]//tr[3]/td//table//tr[position()>1]
 
 DOPRAVAURL=http://www.dpp.cz/povodne-aktualni-doprava/
 DOPRAVATMP=/tmp/doprava.html
@@ -21,14 +21,16 @@ DOPRAVAXPATH2=//div[@id="content-container"]/div[@id="pole"]/div/div[2]//*[@clas
 all: index.html doprava.html pomoc.html kontakty.html
 
 refresh:
-	wget '$(IMGURL1)' -O data/stav.png
-	wget '$(IMGURL2)' -O data/prutok.png
-	wget '$(DATAURL)' -O - | $(XMLLINT) --encode utf8 - | $(XMLLINT) --xpath '$(DATAPATH)' - > data/table.html
+	wget '$(VODAIMG1)' -O data/stav_.png
+	wget '$(VODAIMG2)' -O data/prutok_.png
+	wget '$(VODAURL)' -O - | $(XMLLINT) --encode utf8 - | $(XMLLINT) --xpath '$(VODAXPATH)' - > data/table_.html
+	mv data/stav_.png data/stav.png && mv data/prutok_.png data/prutok.png && mv data/table_.html data/table.html
 
 refreshdpp: 
-	wget http://www.dpp.cz/povodne-aktualni-doprava/ -O - | $(XMLLINT) --encode utf8 - > $(DOPRAVATMP)
-	wget $$($(XMLLINT) --html --xpath  '$(DOPRAVAXPATH1)' $(DOPRAVATMP)) -O - | convert - data/doprava.png 
-	$(XMLLINT) --xpath  '$(DOPRAVAXPATH2)' $(DOPRAVATMP) > data/doprava.html
+	wget $(DOPRAVAURL) -O - | $(XMLLINT) --encode utf8 - > $(DOPRAVATMP)
+	wget $$($(XMLLINT) --html --xpath  '$(DOPRAVAXPATH1)' $(DOPRAVATMP)) -O - | convert - data/doprava_.png 
+	$(XMLLINT) --xpath  '$(DOPRAVAXPATH2)' $(DOPRAVATMP) > data/doprava_.html
+	mv data/doprava_.png data/doprava.png && mv data/doprava_.html data/doprava.html
 	rm $(DOPRAVATMP)
 
 %.html: %.haml
