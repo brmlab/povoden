@@ -15,7 +15,7 @@ DATAPATH=//table[@class="stdstationtbl"]/./tr[3]//table/tr[position()>1]
 
 DOPRAVAURL=http://www.dpp.cz/povodne-aktualni-doprava/
 DOPRAVATMP=/tmp/doprava.html
-DOPRAVAXPATH1=string(//div[@id="content-container"]/div[@id="pole"]/div/div[2]//a[text()="zde"]/@href)
+DOPRAVAXPATH1=string(//div[@id="content-container"]/div[@id="pole"]/div/div[2]//a[starts-with(@title,"Stav dopravy k")]/@href)
 DOPRAVAXPATH2=//div[@id="content-container"]/div[@id="pole"]/div/div[2]//*[@class="img-c img-envelope"]/../preceding-sibling::*
 
 all: index.html doprava.html pomoc.html kontakty.html
