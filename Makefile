@@ -46,7 +46,7 @@ refresh:
 
 refreshdpp:
 	wget $(DOPRAVAURL) -O - | $(XMLLINT) --encode utf8 - > $(DOPRAVATMP)
-	wget $$($(XMLLINT) --html --xpath  '$(DOPRAVAXPATH1)' $(DOPRAVATMP)) -O - | convert - data/doprava_.png
+	wget $$($(XMLLINT) --html --xpath  '$(DOPRAVAXPATH1)' $(DOPRAVATMP)) -O - | convert -density 150 - data/doprava_.png && mogrify -resize 1200x1200 data/doprava_.png
 	$(XMLLINT) --xpath  '$(DOPRAVAXPATH2)' $(DOPRAVATMP) > data/doprava_.html
 	mv data/doprava_.png data/doprava.png && mv data/doprava_.html data/doprava.html
 	rm $(DOPRAVATMP)
