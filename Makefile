@@ -23,7 +23,7 @@ VODANAMESXPATH=//table[@class="stdstationtbl"]/./tr[1]//table/./tr[2]/td/text()
 
 DOPRAVAURL=http://www.dpp.cz/povodne-aktualni-doprava/
 DOPRAVATMP=/tmp/doprava.html
-DOPRAVAXPATH1=string(//div[@id="content-container"]/div[@id="pole"]/div/div[2]//a[starts-with(@title,"Stav dopravy k")]/@href)
+DOPRAVAXPATH1=string((//div[@id="content-container"]/div[@id="pole"]/div/div[2]//a[starts-with(@title,"Stav dopravy k")]/@href)[last()])
 DOPRAVAXPATH2=//div[@id="content-container"]/div[@id="pole"]/div/div[2]//*[@class="img-c img-envelope"]/../preceding-sibling::*
 
 # function
